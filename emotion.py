@@ -17,15 +17,15 @@ with open(json_file_path,'r',encoding='utf-8') as json_file:
     data=json.load(json_file)
 
 songsDetailsList=list(data.items())
-songsDetails=random.sample(songsDetailsList,10)
+songsDetails=random.sample(songsDetailsList,11)
 song_names = [item[1] for item in songsDetails if item[0].startswith('name')]
-while len(song_names) < 10:
-    additional_samples = random.sample(songsDetailsList, 10 - len(song_names))
+while len(song_names) < 11:
+    additional_samples = random.sample(songsDetailsList, 11 - len(song_names))
     additional_names = [item[1] for item in additional_samples if item[0].startswith('name')]
     song_names.extend(additional_names)
 print(song_names)
 songsName={}
-for i in range(0,9):
+for i in range(0,10):
     songsName[f'song {i}']=song_names[i]
 with open('currentEmotionSongs.json','w') as file:
     json.dump(songsName,file)

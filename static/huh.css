@@ -1,0 +1,17 @@
+body{
+    background: #000;
+}
+#runButton{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 1%;
+    border-radius: 100px;
+    top: 50%;
+    left: 45%;
+    position: absolute;
+    text-decoration: none;
+    border: 1px solid;
+    color: blueviolet;
+    cursor: pointer;
+}

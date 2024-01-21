@@ -31,7 +31,7 @@ def emotionDetection():
 
         cv2.imshow("Emotion Detection", frame)
 
-        time.sleep(10)
+        time.sleep(5)
         emotion=labels_dict[label]
         print(f"Emotion: {emotion}")
 
