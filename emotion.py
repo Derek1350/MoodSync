@@ -8,7 +8,7 @@ import time
 import os
 
 
-emotion=test.emotionDetection().lower()
+emotion=test.emotionDetection(duration=5).lower()
 script_path = os.path.abspath(__file__)
 json_file_path = os.path.join(os.path.dirname(script_path), 'songs_data', f'{emotion}Songs.json')
 

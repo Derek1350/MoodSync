@@ -3,6 +3,7 @@ from flask import Flask, render_template, jsonify
 from flask_cors import CORS
 import subprocess
 import json
+from spotifyIntegrate import addToSpotify
 
 
 app = Flask(__name__)
@@ -14,13 +15,14 @@ def getJsonData():
     return data
 
 @app.route('/')
-def index():
+def spotifyIntegrate():
     return "Test SucessFull"
 
 @app.route('/run_process')
 def run_process():
     subprocess.run(['python', 'emotion.py'])
     data=getJsonData()
+    addToSpotify()
     return jsonify(data)
 
 if __name__ == '__main__':
