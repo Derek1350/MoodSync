@@ -3,7 +3,7 @@ import numpy as np
 from keras.models import load_model
 import time
 from collections import Counter
-
+emotion=''
 def emotionDetection(duration=5):
     model = load_model('model_file_30epochs.h5')
 
@@ -44,15 +44,13 @@ def emotionDetection(duration=5):
     video.release()
     cv2.destroyAllWindows()
 
-    # Count occurrences of each emotion
     emotion_counts = Counter(emotions_list)
 
-    # Get the most occurred emotion
     most_common_emotion = emotion_counts.most_common(1)[0][0]
 
     print(f"Emotions collected: {emotions_list}")
     print(f"Most occurred emotion: {most_common_emotion}")
-
+    emotion=most_common_emotion
     return most_common_emotion
 
 # if __name__ == "__main__":

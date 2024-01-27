@@ -17,6 +17,8 @@ def addToSpotify():
         data=json.load(file)
 
     for key, value in data.items():
+        if key=='Emotion':
+            continue
         search_results = spotify.search(q=f"track:{value}") 
         try:
             uri = search_results["tracks"]["items"][0]['uri']
@@ -24,7 +26,7 @@ def addToSpotify():
         except IndexError:
             print(f"{value} doesn't exist in Spotify. Skipped.")
 
-    playlist=spotify.user_playlist_create(user=USERNAME,name=f"TOP 10 SONGS",public=False)
+    playlist=spotify.user_playlist_create(user=USERNAME,name=f"SUGGESTED {(data['Emotion']).upper()} SONGS",public=False)
     id=playlist["id"]
 
     spotify.playlist_add_items(playlist_id=id,items=song_uri)

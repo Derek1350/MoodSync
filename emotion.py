@@ -24,7 +24,7 @@ while len(song_names) < 11:
     additional_names = [item[1] for item in additional_samples if item[0].startswith('name')]
     song_names.extend(additional_names)
 print(song_names)
-songsName={}
+songsName={"Emotion":emotion}
 for i in range(0,10):
     songsName[f'song {i}']=song_names[i]
 with open('currentEmotionSongs.json','w') as file:
