@@ -15,7 +15,7 @@ refresh_token=os.getenv("refresh_token")
 def getAccessToken():
     refresh_token_url=f"https://spotify-api-authorize.onrender.com/refresh-token?refresh_token={refresh_token}"
     response=requests.get(url=refresh_token_url)
-    with open('token.json','w') as file:
+    with open('../token.json','w') as file:
         json.dump(response.json(),file)
 
 def emotionDetection(duration):
@@ -82,7 +82,7 @@ def currentEmotionSongs():
         final_selected_songs[i['track']['name']]=i['track']['uri']
         selected_songs_uri.append(str(i['track']['uri']))
 
-    with open('currentEmotionSongs.json','w') as file:
+    with open('../currentEmotionSongs.json','w') as file:
         json.dump(final_selected_songs,file)
     return [emotion,selected_songs_uri]
 
@@ -105,6 +105,7 @@ def addToSpotify(USERNAME):
         "Content-Type":"application/json"
     }
     response=requests.post(create_playlist_url,headers=create_playlist_headers,json=create_playlist_body)
+    print(response)
     created_playlist_url=response.json()["external_urls"]["spotify"]
     if response.status_code == 201:
         created_playlist_id=response.json()['id']

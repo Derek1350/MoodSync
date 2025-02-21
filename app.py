@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify
 import json
-import function
+import app.function as function
 from flask import Flask
 import time
 from dotenv import load_dotenv
@@ -32,5 +32,5 @@ def detecMood():
         <a href="{response}" target="_blank">Click This Link To get Your Playlist</a>
     """
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
