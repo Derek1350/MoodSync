@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import time
 from collections import Counter
 import json
@@ -15,16 +15,15 @@ refresh_token=os.getenv("refresh_token")
 def getAccessToken():
     refresh_token_url=f"https://spotify-api-authorize.onrender.com/refresh-token?refresh_token={refresh_token}"
     response=requests.get(url=refresh_token_url)
-    with open('../token.json','w') as file:
+    with open('token.json','w') as file:
         json.dump(response.json(),file)
 
 def emotionDetection(duration):
     model = load_model('model_file_30epochs.h5')
-
     video = cv2.VideoCapture(0)
     faceDetect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
-    labels_dict = {0: 'Angry', 1: 'Disgust', 2: 'Fear', 3: 'Happy', 4: 'Sad', 5: 'Sad', 6: 'Surprise'}
+    labels_dict = {0: 'Angry', 1: 'Disgust', 2: 'Fear', 3: 'Happy', 4: 'Sad', 5: 'Surprise'}
 
     emotions_list = []
 
